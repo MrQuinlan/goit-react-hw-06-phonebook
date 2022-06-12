@@ -1,7 +1,18 @@
-import PropTypes from 'prop-types';
+import { changeFilter } from '../../redux/Filter/Filter-actions';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import s from './Filter.module.css';
 
-const Filter = ({ data, handleFilter }) => {
+const Filter = () => {
+    const [filter, setFilter] = useState('');
+    const dispatch = useDispatch();
+
+    const handleFilter = e => {
+        const filteredQuery = e.currentTarget.value;
+        setFilter(filteredQuery);
+        dispatch(changeFilter(filteredQuery));
+    };
+
     return (
         <>
             <label className={s.label}>
@@ -10,8 +21,10 @@ const Filter = ({ data, handleFilter }) => {
                     type="text"
                     name="filter"
                     className={s.input}
-                    value={data}
-                    onChange={handleFilter}
+                    value={filter}
+                    onChange={e => {
+                        handleFilter(e);
+                    }}
                 />
             </label>
         </>
@@ -19,8 +32,3 @@ const Filter = ({ data, handleFilter }) => {
 };
 
 export default Filter;
-
-Filter.propTypes = {
-    data: PropTypes.string.isRequired,
-    handleFilter: PropTypes.func.isRequired,
-};
