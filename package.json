@@ -2,7 +2,6 @@
     "name": "react-homework-template",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://MrQuinlan.github.io/goit-react-hw-04-hooks-phonebook/",
     "dependencies": {
         "@redux-devtools/extension": "^3.2.2",
         "@reduxjs/toolkit": "^1.8.2",
@@ -24,7 +23,7 @@
         "eject": "react-scripts eject",
         "lint:js": "eslint src/**/*.{js,jsx}",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "deploy": "netlify deploy -p",
         "prepare": "husky install"
     },
     "eslintConfig": {
